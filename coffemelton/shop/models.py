@@ -37,7 +37,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     slug = models.SlugField(max_length=50, unique=True)
-    weight = models.IntegerField()
+    weight = models.CharField(max_length=10, default=0)
     # image = models.ImageField()
 
     def __str__(self):
