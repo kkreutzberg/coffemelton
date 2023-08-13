@@ -1,10 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}My Website{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
 
-</body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'shop:home' %}">Home</a></li>
+            {% for category in categories %}
+                <li><a href="{% url 'shop:products_by_category' category.id %}">{{ category.category_name }}</a>
+                    <ul>
+                        {% for subcategory in category.subcategory_set.all %}
+                            <li><a href="{% url 'shop:products_by_subcategory' subcategory.id %}">{{ subcategory.subcategory_name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+    </body>
 </html>

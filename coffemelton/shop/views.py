@@ -1,18 +1,35 @@
+# shop/views.py
+
+from .models import Category, Subcategory, Product
 from django.shortcuts import render
-from django.views.generic import ListView
-from .models import Product
 
 
 def home(request):
-    return render(request, 'home.html')
+    categories = Category.objects.all()
+    return render(request, 'home.html', {'categories': categories})
 
 
-class ProductListView(ListView):
-    model = Product
-    template_name = "product_list.html"
-    context_object_name = 'products'
-    paginate_by = 12
+def products_by_category(request, category_id):
+    category = Category.objects.get(pk=category_id)
+    subcategories = category.subcategory_set.all()
+    products = Product.objects.filter(subcategory__category=category)
 
-    # def get_queryset(self):
-    #     # You can filter products based on categories and subcategories here
-    #     return Product.objects.all()
+    context = {
+        'category': category,
+        'subcategories': subcategories,
+        'products': products,
+    }
+
+    return render(request, 'products_by_category.html', context)
+
+
+def products_by_subcategory(request, subcategory_id):
+    subcategory = Subcategory.objects.get(pk=subcategory_id)
+    products = Product.objects.filter(subcategory=subcategory)
+
+    context = {
+        'subcategory': subcategory,
+        'products': products,
+    }
+
+    return render(request, 'products_by_subcategory.html', context)
