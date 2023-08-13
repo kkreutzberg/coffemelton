@@ -1,50 +1,40 @@
+# Create your models here.
 from django.db import models
 
-# Create your models here.
 
-CATEGORY_CHOICES = (
-    ('K', 'Kohv'),
-    ('T', 'Tee'),
-    ('V', 'Vein'),
-    ('G', 'Gurmee'),
-)
+class Category(models.Model):
+    category_name = models.CharField(max_length=30, default='tootekategooria', unique=True)
 
-SUBCATEGORY_CHOICES = (
-    ('oa', 'Oakohv'),
-    ('jahv', 'Jahvatatud kohv'),
-)
+    def __str__(self):
+        return self.category_name
+
+    def get_subcategories(self):
+        return Subcategory.objects.filter(category=self)
 
 
-# class Category(models.Model):
-#     name = models.CharField(max_length=30)
-#
-#     def __str__(self):
-#         return self.name
-#
-#
-# class Subcategory(models.Model):
-#     name = models.CharField(max_length=30)
-#     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.name
+class Subcategory(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    subcategory_name = models.CharField(max_length=30, default='alamkategooria', unique=True)
+
+    def __str__(self):
+        return self.subcategory_name
 
 
+# which are mandatory fields (null=...); hinnale vaja juurde saada euromärk ette?
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=1, default='K')
-    subcategory = models.CharField(choices=SUBCATEGORY_CHOICES, max_length=4, default='A')
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     slug = models.SlugField(max_length=50, unique=True)
-    weight = models.FloatField(max_length=10, default=0)
-
-    # image = models.ImageField()
+    weight = models.CharField(max_length=6)
+    image = models.ImageField(upload_to='images/', default='default.png')
 
     def __str__(self):
-        return self.name
+        return self.product_name
 
 
+# mõtleme jooksvalt, mis tegelikult on vaja:
 class Order(models.Model):
     pass
 

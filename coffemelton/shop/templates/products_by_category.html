@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>Products in {{ category.category_name }}</h1>
+
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product">
+                <img src="{% static 'media/image/'|add:product.image %}" alt="{{ product.product_name }}">
+                <h2>{{ product.product_name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>Price: ${{ product.price }}</p>
+                <p>Weight: {{ product.weight }} kg</p>
+                <!-- Add more product details here if needed -->
+            </div>
+        {% empty %}
+            <p>No products available in this category.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
