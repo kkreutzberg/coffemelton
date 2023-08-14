@@ -10,8 +10,8 @@
                 <img src="{% static 'media/image/'|add:product.image %}" alt="{{ product.product_name }}">
                 <h2>{{ product.product_name }}</h2>
                 <p>{{ product.description }}</p>
-                <p>Price: ${{ product.price }}</p>
-                <p>Weight: {{ product.weight }} kg</p>
+                <p>Price: € {{ product.price }}</p>
+                <p>Weight: {{ product.weight }} </p>
                 <!-- Add more product details here if needed -->
             </div>
         {% empty %}
