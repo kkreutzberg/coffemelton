@@ -33,3 +33,13 @@ def products_by_subcategory(request, subcategory_id):
     }
 
     return render(request, 'products_by_subcategory.html', context)
+
+
+def product_detail(request, slug):
+    product = Product.objects.get(slug=slug)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'product_detail.html', context)
