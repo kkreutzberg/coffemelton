@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Products in {{ subcategory.subcategory_name }}{% endblock %}
-
-{% block content %}
-<h2>Products in {{ subcategory.subcategory_name }}</h2>
-<ul>
-    {% for product in products %}
- <li>
-        <img src="{% static 'media/image/'|add:product.image %}" alt="{{ product.product_name }}">
-        <h3>{{ product.product_name }}</h3>
-        <p>{{ product.description }}</p>
-        <p>Price: €{{ product.price }}</p>
-        <p>Weight: {{ product.weight }} </p>
-    </li>
-    {% endfor %}
-</ul>
+{% block title %}
+    {{ subcategory.subcategory_name }}
 {% endblock %}
 
+{% block content %}
+    <!-- Include the navigation bar code here -->
+    <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
+        <!-- ... navigation bar code ... -->
+    </nav>
 
-
-
+    <h2>{{ subcategory.subcategory_name }}</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <img src="{% static 'media/images/' %}{{ product.image }}" alt="{{ product.product_name }}">
+                <h3>{{ product.product_name }}</h3>
+                <p>{{ product.description }}</p>
+                <p>Price: €{{ product.price }}</p>
+                <p>Weight: {{ product.weight }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
