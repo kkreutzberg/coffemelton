@@ -6,7 +6,7 @@
         <h1>{{ product.product_name }}</h1>
         <div>
           {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
           {% endif %}
         </div>
         <p>{{ product.description }}</p>

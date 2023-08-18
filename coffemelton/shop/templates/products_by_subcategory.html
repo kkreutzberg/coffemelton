@@ -7,13 +7,17 @@
 <h2>Products in {{ subcategory.subcategory_name }}</h2>
 <ul>
     {% for product in products %}
- <li>
-        <img src="{% static 'media/image/'|add:product.image %}" alt="{{ product.product_name }}">
-        <h3>{{ product.product_name }}</h3>
-        <p>{{ product.description }}</p>
+        <li>
+            <div>
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url 'shop:product_detail' product.slug %}">{{ product.product_name }}</a>
+            </div>
         <p>Price: € {{ product.price }}</p>
-        <p>Weight: {{ product.weight }} </p>
-    </li>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}
