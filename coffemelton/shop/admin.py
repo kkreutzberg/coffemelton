@@ -14,6 +14,7 @@ class ProductForm(forms.ModelForm):
 class ProductAdmin(admin.ModelAdmin):
     form = ProductForm
     list_display = ('product_name', 'subcategory', 'price')
+    prepopulated_fields = {"slug": ("product_name",)}
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'subcategory':
