@@ -9,15 +9,15 @@
             <div class="product">
                 <div>
                     {% if product.image %}
-                        <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+                        <a href="{% url 'shop:product_detail' product.slug %}">
+                            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+                        </a>
                     {% endif %}
                 </div>
                 <div>
                     <a href="{% url 'shop:product_detail' product.slug %}">{{ product.product_name }}</a>
                 </div>
-                <p>{{ product.description }}</p>
                 <p>Price: € {{ product.price }}</p>
-                <p>Weight: {{ product.weight }} </p>
                 <!-- Add more product details here if needed -->
             </div>
         {% empty %}
