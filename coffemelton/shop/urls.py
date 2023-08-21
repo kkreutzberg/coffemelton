@@ -9,3 +9,5 @@ urlpatterns = [
     path('subcategory/<int:subcategory_id>/', views.products_by_subcategory, name='products_by_subcategory'),
     path('product/<slug:slug>/', views.product_detail, name='product_detail')
 ]
+
+
