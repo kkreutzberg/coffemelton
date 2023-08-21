@@ -11,16 +11,25 @@
         <!-- ... navigation bar code ... -->
     </nav>
 
-    <h2>{{ subcategory.subcategory_name }}</h2>
-    <ul>
+<h2>Products in {{ subcategory.subcategory_name }}</h2>
+    <div class="product-list">
         {% for product in products %}
-            <li>
-                <img src="{% static 'media/images/' %}{{ product.image }}" alt="{{ product.product_name }}">
-                <h3>{{ product.product_name }}</h3>
-                <p>{{ product.description }}</p>
-                <p>Price: €{{ product.price }}</p>
-                <p>Weight: {{ product.weight }}</p>
-            </li>
+            <div class="product">
+                <div>
+                    {% if product.image %}
+                        <a href="{% url 'shop:product_detail' product.slug %}">
+                            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+                        </a>
+                    {% endif %}
+                </div>
+                <div>
+                    <a href="{% url 'shop:product_detail' product.slug %}">{{ product.product_name }}</a>
+                </div>
+                <p>Price: € {{ product.price }}</p>
+                <!-- Add more product details here if needed -->
+            </div>
+        {% empty %}
+            <p>No products available in this category.</p>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

@@ -27,8 +27,8 @@
             <ul class="navbar-nav">
                 {% for category in categories %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown{{ category.id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ category.category_name }}
+                        <a class="nav-link dropdown-toggle text-white" href="{% url 'shop:products_by_category' category.id %}" id="navbarDropdown{{ category.id }}"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ category.category_name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
                             {% for subcategory in category.subcategory_set.all %}
