@@ -3,10 +3,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm, LoginUserForm, UpdateUserForm
 from django.contrib.auth.decorators import login_required
-
+from shop.models import Category
 
 # Create your views here.
 def register(request):
+    categories = Category.objects.all()
     form = CreateUserForm()
     if request.method == "POST":
         form = CreateUserForm(request.POST)
@@ -14,12 +15,13 @@ def register(request):
             form.save()
             return redirect("shop:home")
 
-    context = {'form': form}
+    context = {'form': form, 'categories': categories}
 
     return render(request, "register.html", context=context)
 
 
 def my_login(request):
+    categories = Category.objects.all()
     form = LoginUserForm()
 
     if request.method == 'POST':
@@ -32,7 +34,7 @@ def my_login(request):
                 auth.login(request, user)
                 return redirect('dashboard')
 
-    context = {'form': form}
+    context = {'form': form, 'categories': categories}
     return render(request, 'my-login.html', context=context)
 
 
@@ -43,11 +45,15 @@ def my_logout(request):
 
 @login_required(login_url="my-login")
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    categories = Category.objects.all()
+    context = {'categories': categories}
+
+    return render(request, 'dashboard.html', context=context)
 
 
 @login_required(login_url="my-login")
 def profile_management(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
         if user_form.is_valid():
@@ -55,7 +61,7 @@ def profile_management(request):
             return redirect ('dashboard')
 
     user_form = UpdateUserForm(instance=request.user)
-    context = {'user_form':user_form}
+    context = {'user_form':user_form, 'categories': categories}
 
     return render(request, 'profile-management.html', context)
 
