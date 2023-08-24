@@ -24,10 +24,12 @@ def products_by_category(request, category_id):
 
 
 def products_by_subcategory(request, subcategory_id):
+    categories = Category.objects.all()
     subcategory = Subcategory.objects.get(pk=subcategory_id)
     products = Product.objects.filter(subcategory=subcategory)
 
     context = {
+        'categories': categories,
         'subcategory': subcategory,
         'products': products,
     }
@@ -36,9 +38,11 @@ def products_by_subcategory(request, subcategory_id):
 
 
 def product_detail(request, slug):
+    categories = Category.objects.all()
     product = Product.objects.get(slug=slug)
 
     context = {
+        'categories': categories,
         'product': product,
     }
 
