@@ -4,11 +4,14 @@ from .models import Category, Subcategory, Product
 
 
 class ProductForm(forms.ModelForm):
-    subcategory = forms.ModelChoiceField(queryset=Subcategory.objects.all())  # Add this line for subcategory selection
+    # Add this line for subcategory selection
+    subcategory = forms.ModelChoiceField(queryset=Subcategory.objects.all())
 
     class Meta:
         model = Product
-        fields = ('product_name', 'subcategory', 'description', 'price', 'slug', 'weight', 'image')
+        fields = ('product_name', 'subcategory', 'description',
+                  'price', 'slug', 'weight', 'image'
+                  )
 
 
 class ProductAdmin(admin.ModelAdmin):
