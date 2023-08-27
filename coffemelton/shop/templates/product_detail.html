@@ -3,14 +3,24 @@
 
 {% block content %}
     <div>
-        <h1>{{ product.product_name }}</h1>
+        <h5>
+            <strong>
+                {{ product.product_name }}
+            </strong>
+        </h5>
         <div>
           {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+            <img src="{{ product.image.url }}" alt="{{ product.product_name }}"
+                 width="200" height="200">
           {% endif %}
         </div>
         <p>{{ product.description }}</p>
-        <p>Price: € {{ product.price }}</p>
-        <p>Weight: {{ product.weight }} </p>
+        <p><strong>Kaal:</strong> {{ product.weight }} </p>
+        <p><strong>Hind:</strong> € {{ product.price }}</p>
+
+        <button type="submit" class="btn btn-secondary btn-lg">
+            Lisa ostukorvi
+        </button>
+
     </div>
 {% endblock %}

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+    {{category.category_name }}
+{% endblock %}
+
 {% block content %}
-    <h1>Products in {{ category.category_name }}</h1>
+    <h1>{{ category.category_name }}</h1>
 
     <!-- Include the navigation bar code here -->
     <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
@@ -12,18 +16,24 @@
     <div class="product-list">
         {% for product in products %}
             <div class="product">
+
               <div>
                     {% if product.image %}
                         <a href="{% url 'shop:product_detail' product.slug %}">
-                            <img src="{{ product.image.url }}" alt="{{ product.product_name }}" width="200" height="200">
+                            <img src="{{ product.image.url }}"
+                                 alt="{{ product.product_name }}" width="200" height="200">
                         </a>
                     {% endif %}
                 </div>
+
                 <div>
-                    <a href="{% url 'shop:product_detail' product.slug %}">{{ product.product_name }}</a>
+                    <a href="{% url 'shop:product_detail' product.slug %}">
+                        {{ product.product_name }}
+                    </a>
                 </div>
-                <p>Price: € {{ product.price }}</p>
+                <p><strong>Hind:</strong> € {{ product.price }}</p>
             </div>
+
         {% empty %}
             <p>No products available in this category.</p>
         {% endfor %}

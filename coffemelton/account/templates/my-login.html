@@ -4,10 +4,9 @@
 {% block content %}
 
 <body style="background-color: lightgrey">
-<br />
+    <br>
     <div class="container bg-white shadow-md p-5 form-layout">
-
-        <h3>Log in!</h3>
+        <h3>Logi sisse</h3>
 
         <form method="POST" autocomplete="off">
             {% csrf_token %}
@@ -15,7 +14,10 @@
             {{form.username|as_crispy_field}}
             {{form.password|as_crispy_field}}
 
-            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">Log in</button>
+            <button type="submit" class="btn btn-secondary btn-lg w-100
+            btn-block">
+                Logi sisse
+            </button>
             {{form.non_field_errors}}
         </form>
     </div>

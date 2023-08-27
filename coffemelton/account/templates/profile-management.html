@@ -4,10 +4,10 @@
 {% block content %}
 
 <body style="background-color: lightgrey">
-<br />
+    <br>
     <div class="container bg-white shadow-md p-5 form-layout">
 
-        <h3>Update your account</h3>
+        <h3>Uuenda konto andmeid</h3>
 
         <form method="POST" autocomplete="off">
             {% csrf_token %}
@@ -15,7 +15,9 @@
             {{user_form.username|as_crispy_field}}
             {{user_form.email|as_crispy_field}}
 
-            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">Update</button>
+            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">
+                Uuenda
+            </button>
             {{form.non_field_errors}}
         </form>
     </div>
