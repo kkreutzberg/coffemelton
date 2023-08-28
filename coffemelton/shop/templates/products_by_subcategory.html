@@ -6,22 +6,25 @@
 {% endblock %}
 
 {% block content %}
-
+<br>
 <h3>{{ subcategory.subcategory_name }}</h3>
 
     <div class="product-list">
         {% for product in products %}
+
             <div class="product">
                 <div>
                     {% if product.image %}
+
                         <a href="{% url 'shop:product_detail' product.slug %}">
                             <img src="{{ product.image.url }}"
-                                 alt="{{ product.product_name }}" width="200" height="200">
+                                 alt="{{ product.product_name }}" width="50" height="50">
                         </a>
                     {% endif %}
                 </div>
 
                 <div>
+
                     <a href="{% url 'shop:product_detail' product.slug %}">
                         {{ product.product_name }}</a>
                 </div>
@@ -32,6 +35,7 @@
                     Lisa ostukorvi
                 </button>
             </div>
+            <br>
 
         {% empty %}
             <p>No products available in this category.</p>
