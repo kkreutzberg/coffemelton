@@ -40,6 +40,13 @@ class Product(models.Model):
     weight = models.IntegerField(blank=True, null=True)
     image = models.ImageField(upload_to='images/', default='', blank=True, null=True)
 
+    TEMPERATURE_CHOICES = [
+        ('cold', 'Cold'),
+        ('mild', 'Mild'),
+        ('hot', 'Hot'),
+    ]
+
+    temperature = models.CharField(max_length=10, choices=TEMPERATURE_CHOICES, default='mild')
     class Meta:
         verbose_name_plural = 'Products'
 

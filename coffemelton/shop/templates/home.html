@@ -121,6 +121,26 @@
             </div>
         </div>
         <!-- Quality section end -->
+        <!-- Weather section -->
+        <section class="py-4 text-center container">
+        <h2>Praegune Ilm</h2>
+        {% if weather_data %}
+        <p>Asukoht: {{ weather_data.name }}, {{ weather_data.sys.country }}</p>
+        <p>Temperatuur: {{ weather_data.main.temp }}°C</p>
+        <p>Ilm: {{ weather_data.weather.0.description }}</p>
+        {% if weather_data.suggestions %}
+        <p>Soovituslikud joogid: {{ weather_data.suggestions|join:", " }}</p>
+        {% endif %}
+        <h3></h3>
+        <ul>
+
+
+        </ul>
+        {% else %}
+        <p>Weather information is currently unavailable.</p>
+        {% endif %}
+        </section>
+        <!-- Weather section end -->
 
     </main>
 
