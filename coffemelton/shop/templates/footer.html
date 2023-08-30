@@ -1,0 +1,54 @@
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: darkblue;
+  color: white;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  padding: 0px;
+ }
+
+.left, .right {
+  width: 25%;
+}
+
+.middle {
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<body>
+<div class="footer">
+  <h3>Nii hea - võite sattuda sõltuvusse!</h3>
+
+<div class="row">
+    <div class="column left">
+        <td>Caffee Melton</td>
+    </div>
+    <div class="column middle">
+        <td> Our final project for SDA</td>
+    </div>
+    <div class="column right">
+        <td> Projekti juht</td>
+    </div>
+
+</div>
+</div>
+</body>
+
