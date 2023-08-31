@@ -2,25 +2,37 @@
 {% load static %}
 
 {% block content %}
-    <div>
-        <h5>
-            <strong>
-                {{ product.product_name }}
-            </strong>
-        </h5>
-        <div>
-          {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.product_name }}"
-                 width="200" height="200">
-          {% endif %}
-        </div>
-        <p>{{ product.description }}</p>
-        <p><strong>Kaal:</strong> {{ product.weight }} </p>
-        <p><strong>Hind:</strong> € {{ product.price }}</p>
-
+    <body style="background-color: lightgrey">
+    <br>
+    <div class="container bg-white shadow-md p-15 form-layout">
+        <br>
+        <h3 style="text-align:center;"><strong> {{ product.product_name }}</strong></h3>
+        <table style="...">
+        <tr>
+            <th rowspan="3">
+                <div>
+                  {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}"
+                         width="200" height="200">
+                  {% endif %}
+                </div>
+            </th>
+              <td><h4><strong>Hind:</strong> € {{ product.price }}</h4></td>
+        </tr>
+        <tr>
+           <td> <p>{{ product.description }}</p></td>
+        </tr>
+        <tr>
+           <td> <p>{{ product.weight }} g</p></td>
+        </tr>
+        </table>
+    <div class="text-center">
         <button type="submit" class="btn btn-secondary btn-lg">
-            Lisa ostukorvi
+              Lisa ostukorvi
         </button>
-
+        <br><br>
     </div>
+    </div>
+
+    </body>
 {% endblock %}

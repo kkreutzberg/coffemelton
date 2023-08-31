@@ -6,35 +6,57 @@
 {% endblock %}
 
 {% block content %}
+     <body style="background-color: lightgrey">
+     <br>
+     <div class="container bg-white shadow-md p-0 form-layout">
 
-<h3>{{ subcategory.subcategory_name }}</h3>
+    <br>
+    <h3 style="text-align:center;"><strong>{{ subcategory.subcategory_name }}</strong></h3>
+
+    <br>
 
     <div class="product-list">
         {% for product in products %}
+            <div class="container bg-white shadow-md p-15 form-layout">
             <div class="product">
-                <div>
+            <table style="width:100%">
+              <tr>
+                <td style="width:15%" rowspan="2">
+                    <div>
                     {% if product.image %}
+
                         <a href="{% url 'shop:product_detail' product.slug %}">
                             <img src="{{ product.image.url }}"
-                                 alt="{{ product.product_name }}" width="200" height="200">
+                                 alt="{{ product.product_name }}" width="60" height="60">
                         </a>
                     {% endif %}
                 </div>
+                </td>
+                <td>
+                    <div>
 
-                <div>
                     <a href="{% url 'shop:product_detail' product.slug %}">
                         {{ product.product_name }}</a>
                 </div>
-                <p><strong>Hind:</strong> € {{ product.price }}</p>
-                <!-- Add more product details here if needed -->
-
-                <button type="submit" class="btn btn-secondary btn-lg">
-                    Lisa ostukorvi
+                </td>
+                <td style="width:20%" rowspan="2">
+                    <button type="submit" class="btn btn-secondary" >
+                    Lisa korvi
                 </button>
-            </div>
+                </td>
+              </tr>
+              <tr>
+                <td> <p><strong>Hind:</strong> € {{ product.price }}</p></td>
+              </tr>
 
+            </table>
+
+            </div>
+            </div>
+            <br>
         {% empty %}
-            <p>No products available in this category.</p>
+            <p>Selles kategoorias tooteid pakkuda ei ole.</p>
+            <br>
         {% endfor %}
     </div>
 {% endblock %}
