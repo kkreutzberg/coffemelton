@@ -1,54 +1,58 @@
 <style>
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: darkblue;
-  color: white;
-  text-align: center;
-}
+       .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
 
-* {
-  box-sizing: border-box;
-}
+          color: white;
+          text-align: center;
+        }
 
-.column {
-  float: left;
-  padding: 0px;
- }
+        * {
+          box-sizing: border-box;
+        }
 
-.left, .right {
-  width: 25%;
-}
+        .column {
+          float: left;
+          padding: 0px;
+         }
 
-.middle {
-  width: 50%;
-}
+        .left, .right {
+          width: 15%;
+        }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        .middle {
+          width: 70%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
 </style>
 <body>
-<div class="footer">
-  <h3>Nii hea - võite sattuda sõltuvusse!</h3>
+            <div class="footer navbar-expand-lg bg-primary justify-content-center">
+              <div class="container">
+                <br>
+                <h5>Nii hea - võite sattuda sõltuvusse!</h5>
 
-<div class="row">
-    <div class="column left">
-        <td>Caffee Melton</td>
-    </div>
-    <div class="column middle">
-        <td> Our final project for SDA</td>
-    </div>
-    <div class="column right">
-        <td> Projekti juht</td>
-    </div>
+                <div class="row">
+                    <div class="column left">
+                        <td align="right">Caffee Melton</td>
+                    </div>
+                    <div class="column middle">
+                        <td> Our final project for SDA</td>
+                    </div>
+                    <div class="column right">
+                        <td align="left"> Manager (meil)</td>
+                    </div>
 
-</div>
-</div>
+                </div>
+              </div>
+            </div>
 </body>
 
