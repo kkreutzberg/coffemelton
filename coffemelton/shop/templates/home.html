@@ -1,127 +1,170 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block title %}Avaleht{% endblock %}
 
 {% block content %}
-    <main>
-        <!-- Banner section -->
-        <section class="py-4 text-right container"
-                 style="position: relative;
-                 overflow: hidden;">
-            <div class="row py-lg-3">
-                <div class="col-lg-6 col-md-8 mx-auto"
-                     style="position: relative; z-index: 1">
-                    <h2 class="fw-bold" style="text-align: center">
-                        Tere tulemast!
-                    </h2>
+<main>
+    <!-- Banner and Content section -->
+    <div class="container">
+        <div class="row">
+            <!-- Left column for About us (2/3 width) -->
+            <div class="col-lg-8">
+                <!-- About us section -->
+                <div class="container" style="padding-top: 25px; text-align: justify">
+                    <hr>
+                    <h5>
+                        <strong>
+                            Kes me oleme
+                        </strong>
+                    </h5>
+                    <p>Juba 2002. aastast tegutsev perefirma Caffe Melton tekkis soovist anda
+                        võimalus ka Eesti inimestele saada osa Itaalia põhjaosast Torinost pärineva
+                        kohvitootja Costadoro kohvisortide laiast ja sametise maitsega valikust.
+                        Õiglase kaubanduse põhimõtete järgi kasvatatud ja Itaalia Rahvusliku
+                        Espresso Instituudi sertifikaadi pälvinud Costadoro kohvioad tagavad
+                        farmeritele õiglase tasu saamisel ja kindlustad arengumaade tulevikku!
+                        Lisaks ülemaailmselt armastatud Costadoro kohvile, on aja jooksul rikastanud
+                        Caffe Meltoni sortimenti ka Saksamaalt pärinevad kõrgeid standardeid järgiv
+                        Althausi tee ja Braunewelli veinivalik.
+                    </p>
+                    <p>Caffe Melton suunab enda tootevaliku neile, kes ühes Caffe Meltoniga hindavad
+                        peale õiglase kaubanduse põhimõtete ja kvaliteedi ka loodussõbralikkust ja
+                        kauba värskust. Peale ümbertöödeldavate Braunewelli klaaspudelite ning
+                        Althausi teepakendite, on Costadoro kõik kohvipakendid täielikult lagunevad.
+                    </p>
+                    <p>Ühtlasi on loodussäästlikes pakendites kohvioad ka väga värsked, kuna
+                        rohelised oad pannakse röstima tellimuse peale. Tooteid ei tellita suurtes
+                        kogustes lattu pikaks ajaks seisma, et tagada koostööpartneritele Costadoro
+                        kohv oma parimas võimalikus vormis. Caffe Meltoni edendajad soovivad, et
+                        nende kliendid saaksid alati samasuguse rikkaliku maitseelamuse ja
+                        positiivse emotsiooni nagu said nad isegi aastaid tagasi esimest korda tõelise kohvi maitset tundes.
+                    </p>
                 </div>
+                <!-- About us section end -->
             </div>
-            <img src="{% static 'media/images/icons/banner5.jpg' %}" alt=" "
-                 style="padding-top: 25px; position: absolute;
-                 top: 0; left: 0; width: 100%; height: auto; z-index: 0">
-        </section>
-        <!-- Banner section end -->
 
-        <!-- About us section -->
-        <div class="container" style="padding-top: 25px; text-align: justify">
-            <hr>
-            <h5>
-                <strong>
-                    Kes me oleme
-                </strong>
-            </h5>
-            <p>Juba 2002. aastast tegutsev perefirma Caffe Melton tekkis soovist anda
-                võimalus ka Eesti inimestele saada osa Itaalia põhjaosast Torinost pärineva
-                kohvitootja Costadoro kohvisortide laiast ja sametise maitsega valikust.
-                Õiglase kaubanduse põhimõtete järgi kasvatatud ja Itaalia Rahvusliku
-                Espresso Instituudi sertifikaadi pälvinud Costadoro kohvioad tagavad
-                farmeritele õiglase tasu ja tõelistele nautijatele lubatud kvaliteedi.
-                Lisaks ülemaailmselt armastatud Costadoro kohvile, on aja jooksul rikastanud
-                Caffe Meltoni sortimenti ka Saksamaalt pärinevad kõrgeid standardeid järgiv
-                Althausi tee ja Braunewelli veinivalik.
-            </p>
-            <p>Caffe Melton suunab enda tootevaliku neile, kes ühes Caffe Meltoniga hindavad
-                peale õiglase kaubanduse põhimõtete ja kvaliteedi ka loodussõbralikkust ja
-                kauba värskust. Peale ümbertöödeldavate Braunewelli klaaspudelite ning
-                Althausi teepakendite, on Costadoro kõik kohvipakendid täielikult lagunevad.
-            </p>
-            <p>Ühtlasi on loodussäästlikes pakendites kohvioad ka väga värsked, kuna
-                rohelised oad pannakse röstima tellimuse peale. Tooteid ei tellita suurtes
-                kogustes lattu pikaks ajaks seisma, et tagada koostööpartneritele Costadoro
-                kohv oma parimas võimalikus vormis. Caffe Meltoni edendajad soovivad, et
-                nende kliendid saaksid alati samasuguse rikkaliku maitseelamuse ja
-                positiivse
-                emotsiooni nagu said nad isegi aastaid tagasi esimest korda tõelise kohvi
-                maitset tundes.
-            </p>
-        </div>
-        <!-- About us section end -->
-
-        <!-- Quality section -->
-        <div class="py-4 text-center container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="col-lg-12">
-                        <hr>
-                        <img src="{% static 'media/images/icons/Caffe-Melton-ikoon-2.png' %}"
-                             alt=" ">
-                        <h6>
-                            <strong>
-                                Õiglaseid põhimõtteid järgides kasvatatud kohvioad
-                            </strong>
-                        </h6>
-                        <br>
-                        <p class="text-center">
-                            Ostes Caffe Meltoni valikust Costadoro kohvi, toetad farmereid
-                            õiglase tasu saamisel ja kindlustad arengumaade tulevikku!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="col-lg-12">
-                        <hr>
-                        <img src="{% static 'media/images/icons/Untitled-design-2.png' %}"
-                             alt=" ">
-                        <h6>
-                            <strong>
-                                100% lagunev pakend
-                            </strong>
-                        </h6>
-                        <br>
-                        <p class="text-center">
-                            Kõik Costadoro kohvivaliku pakendid on looduses täielikult
-                            lagunevad!
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="col-lg-12">
-                        <hr>
-                        <img src="{% static 'media/images/icons/Copy-of-Caffe-Melton-ikoon-2.png' %}"
-                             alt=" ">
-                        <h6>
-                            <strong>
-                                Kindel oma kvaliteedis
-                            </strong>
-                        </h6>
-                        <br>
-                        <p class="text-center">
-                            Costadoro julgeb tähistada oma toodete kofeiinisisaldust
-                            protsendi täpsusega – nende kogenud kohvimeistrid saavad igal
-                            röstimisel ja kohvisegu koostamisel lubatud kofeiinisisalduse
-                            tulemuse! Costadoro kvaliteeti toetab ka Itaalia Rahvusliku
-                            Espresso Instituudi sertifikaat.
-                        </p>
-                    </div>
+            <!-- Right column for Weather (1/3 width) -->
+            <div class="col-lg-4">
+                <!-- Center both vertically and horizontally -->
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <!-- Weather section -->
+                    <section class="py-3 text-center" style="padding: 10px;">
+                    <!-- Weather search form -->
+                    <form method="get" class="mt-4">
+                        <div class="input-group">
+                            <input type="text" name="city" class="form-control" placeholder="Sisesta linn või asukoht">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Otsi Ilma</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Weather search form end -->
+                        <h4>Praegune Ilm</h4>
+                        {% if weather_data %}
+                        <p>Asukoht: {{ weather_data.name }}, {{ weather_data.sys.country }}</p>
+                        <p>Temperatuur: {{ weather_data.main.temp|floatformat:1 }}°C</p>
+                        <p>Ilm: {{ weather_data.weather.0.description }}</p>
+                        {% if weather_data.suggestions %}
+                            <p>Soovituslikud joogid:
+                                {% if 'Kohv' in weather_data.suggestions %}
+                                    <a href="{% url 'shop:products_by_category' category_id=1 %}" class="text-danger">Kohv</a>
+                                {% elif 'Tee' in weather_data.suggestions %}
+                                     <a href="{% url 'shop:products_by_category' category_id=2 %}" class="text-success">Tee</a>
+                                {% elif 'Vein' in weather_data.suggestions %}
+                                    <a href="{% url 'shop:products_by_category' category_id=3 %}" class="text-primary">Vein</a>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                        <ul>
+                            <!-- Add any additional weather information here -->
+                        </ul>
+                        {% else %}
+                        <p>Ilmateave pole hetkel saadaval.</p>
+                        {% endif %}
+                    </section>
+                    <!-- Weather section end -->
                 </div>
             </div>
         </div>
-        <!-- Quality section end -->
+    </div>
+    <!-- Banner and Content section end -->
 
-    </main>
+    <!-- Quality section -->
+    <div class="py-4 text-center container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="col-lg-12">
+                    <hr>
+                    <img src="{% static 'media/images/icons/Caffe-Melton-ikoon-2.png' %}" alt="">
+                    <h6><strong>Õiglaseid põhimõtteid järgides kasvatatud kohvioad</strong></h6>
+                    <br>
+                    <p class="text-center">
+                        Ostes Caffe Meltoni valikust Costadoro kohvi, toetad farmereid õiglase tasu saamisel ja kindlustad arengumaade tulevikku!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="col-lg-12">
+                    <hr>
+                    <img src="{% static 'media/images/icons/Untitled-design-2.png' %}" alt="">
+                    <h6><strong>100% lagunev pakend</strong></h6>
+                    <br>
+                    <p class="text-center">
+                        Kõik Costadoro kohvivaliku pakendid on looduses täielikult lagunevad!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="col-lg-12">
+                    <hr>
+                    <img src="{% static 'media/images/icons/Copy-of-Caffe-Melton-ikoon-2.png' %}" alt="">
+                    <h6><strong>Kindel oma kvaliteedis</strong></h6>
+                    <br>
+                    <p class="text-center">
+                        Costadoro julgeb tähistada oma toodete kofeiinisisaldust protsendi täpsusega – nende kogenud kohvimeistrid saavad igal röstimisel ja kohvisegu koostamisel lubatud kofeiinisisalduse tulemuse! Costadoro kvaliteeti toetab ka Itaalia Rahvusliku Espresso Instituudi sertifikaat.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Quality section end -->
+</main>
+
+<script>
+    function openCategory(category) {
+        // Define a mapping of categories to category IDs (update with actual IDs)
+        var categoryMapping = {
+            'Kohv': 1,
+            'Tee': 2,
+            'Vein': 3
+        };
+
+        // Get the category ID based on the selected category name
+        var categoryId = categoryMapping[category];
+
+        // Construct the URL for the selected category
+        var categoryURL = "{% url 'shop:products_by_category' category_id=1 %}";
+
+        // Redirect to the selected category page
+        window.location.href = categoryURL.replace('1', categoryId);
+    }
+
+    function openRandomCoffeeProduct() {
+        // Replace this URL with the URL of your coffee products page
+        var coffeeProductsPageURL = "{% url 'shop:products_by_subcategory' subcategory_id=1 %}";
+
+        // Generate a random product ID or index (adjust this according to your product data)
+        var randomProductID = Math.floor(Math.random() * 10); // Change 10 to the total number of coffee products
+
+        // Construct the URL for the random coffee product
+        var randomCoffeeProductURL = coffeeProductsPageURL + "?product_id=" + randomProductID;
+
+        // Open the random coffee product page in a new tab
+        window.open(randomCoffeeProductURL, '_blank');
+    }
+</script>
 
 {% endblock %}
