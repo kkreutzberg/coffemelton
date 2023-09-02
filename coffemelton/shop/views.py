@@ -24,11 +24,13 @@ def home(request):
 
 def products_by_category(request, category_id):
     category = Category.objects.get(pk=category_id)
+    categories = Category.objects.all()
     subcategories = category.subcategory_set.all()
     products = Product.objects.filter(subcategory__category=category)
 
     context = {
         'category': category,
+        'categories': categories,
         'subcategories': subcategories,
         'products': products,
     }

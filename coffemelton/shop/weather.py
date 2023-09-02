@@ -3,6 +3,7 @@ import requests
 API_KEY = '57ed3a2ad0d9783da38653dcbd2e9ba4'
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
+
 def get_weather(city_name):
     params = {
         'q': city_name,
@@ -19,6 +20,7 @@ def get_weather(city_name):
     else:
         return None
 
+
 def get_weather_with_suggestions(city_name):
     data = get_weather(city_name)
 
@@ -28,7 +30,7 @@ def get_weather_with_suggestions(city_name):
 
         if 15 <= temperature <= 40:
             suggestions = ['Vein']
-        elif 0<= temperature <= 15:
+        elif 0 <= temperature <= 15:
             suggestions = ['Kohv']
         else:
             suggestions = ['Tee']
@@ -37,6 +39,3 @@ def get_weather_with_suggestions(city_name):
         data['suggestions'] = suggestions
 
     return data
-
-
-

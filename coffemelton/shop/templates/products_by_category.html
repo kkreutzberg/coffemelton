@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ category.category_name }}</h1>
+     <body style="background-color: lightgrey">
+     <br>
+     <div class="container bg-white shadow-md p-0 form-layout">
 
-    <!-- Include the navigation bar code here -->
-    <nav class="navbar navbar-expand-lg bg-primary justify-content-center">
-        <!-- ... navigation bar code ... -->
-    </nav>
+    <br>
+    <h3 style="text-align:center;"><strong>{{ category.category_name }}</strong></h3>
 
     <div class="product-list">
         {% for product in products %}
