@@ -1,5 +1,4 @@
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import authenticate, login
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django import forms
@@ -86,15 +85,6 @@ class LoginUserForm(AuthenticationForm):
 class UpdateUserForm(forms.ModelForm):
     password = None
 
-    def __init__(self, *args, **kwargs):
-        super(UpdateUserForm, self).__init__(*args, **kwargs)
-        self.fields['email'].required = True
-
-    class Meta:
-        model = User
-        fields = ['username', 'email']
-        exclude = ['password1', 'password2']
-
     username = forms.CharField(
         label=_("Kasutajanimi"),
         help_text=_("Nõutav. Kuni 150 tähemärki. Võib sisaldada ainult tähti, numbreid "
@@ -106,3 +96,44 @@ class UpdateUserForm(forms.ModelForm):
         help_text=_("Nõutav. Sisestage kehtiv e-maili aadress."),
         # ... other attributes
     )
+
+    old_password = forms.CharField(
+        label='Kehtiv salasõna',
+        widget=forms.PasswordInput,
+        required=False  # Not required if the user wants to update other profile information only
+    )
+    new_password1 = forms.CharField(
+        label='Uus salasõna',
+        widget=forms.PasswordInput,
+        required=False
+    )
+    new_password2 = forms.CharField(
+        label='Kinnita uus salasõna',
+        widget=forms.PasswordInput,
+        required=False
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'old_password', 'new_password1', 'new_password2']
+        # exclude = ['password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        super(UpdateUserForm, self).__init__(*args, **kwargs)
+        self.fields['email'].required = True
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data.get('old_password')
+        if old_password and not self.instance.check_password(old_password):
+            raise forms.ValidationError('Incorrect old password.')
+        return old_password
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_password1 = cleaned_data.get('new_password1')
+        new_password2 = cleaned_data.get('new_password2')
+
+        if new_password1 and new_password2 and new_password1 != new_password2:
+            raise forms.ValidationError('Kirjuta uus parool kaks korda ühtmoodi!')
+
+        return cleaned_data
