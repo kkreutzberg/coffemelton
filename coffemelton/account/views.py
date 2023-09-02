@@ -1,10 +1,10 @@
 from django.contrib.auth.models import auth
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, update_session_auth_hash
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm, LoginUserForm, UpdateUserForm
 from django.contrib.auth.decorators import login_required
 from shop.models import Category
-
+from django.contrib.auth.models import User
 
 # Create your views here.
 def register(request):
@@ -59,11 +59,21 @@ def profile_management(request):
         user_form = UpdateUserForm(request.POST, instance=request.user)
         if user_form.is_valid():
             user_form.save()
+
+            # Handle password change
+            old_password = user_form.cleaned_data.get('old_password')
+            new_password = user_form.cleaned_data.get('new_password1')
+
+            if old_password and new_password:
+                request.user.set_password(new_password)  # Use request.user to access the logged-in user
+                request.user.save()
+                update_session_auth_hash(request, request.user)  # Update the session with the new password
             return redirect('dashboard')
 
-    user_form = UpdateUserForm(instance=request.user)
-    context = {'user_form': user_form, 'categories': categories}
+    else:
+        user_form = UpdateUserForm(instance=request.user)
 
+    context = {'user_form': user_form, 'categories': categories}
     return render(request, 'profile-management.html', context)
 
 

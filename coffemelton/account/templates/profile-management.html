@@ -14,6 +14,12 @@
 
             {{user_form.username|as_crispy_field}}
             {{user_form.email|as_crispy_field}}
+            <br>
+            <b>Muuda salasõna:</b>
+            <br>
+            {{ user_form.old_password|as_crispy_field }}
+            {{ user_form.new_password1|as_crispy_field }}
+            {{ user_form.new_password2|as_crispy_field }}
 
             <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">
                 Uuenda
