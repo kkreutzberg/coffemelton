@@ -36,12 +36,11 @@ class Cart:
         self.save()
 
     def update(self, product, quantity):
-        product_id = str(product.id)
-        product_quantity = quantity
-
+        product_id = str(product.id)  # Assuming product is an integer (product_id)
+        quantity = int(quantity)
         if product_id in self.cart:
-            self.cart[product_id]['quantity'] = product_quantity
-        self.session.modified = True
+            self.cart[product_id]['quantity'] = quantity
+            self.save()
 
     def __iter__(self):
         product_ids = self.cart.keys()

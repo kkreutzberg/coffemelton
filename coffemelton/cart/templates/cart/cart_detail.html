@@ -39,16 +39,26 @@
                             <td>€ {{ item.price }}</td>
 
                             <td>
-                                <form action="{% url "cart:cart_add" product.id %}"
-                                      method="post">
+
+                                <form action="{% url 'cart:cart_update' %}" method="post">
                                     {% csrf_token %}
-                                    {{ item.update_quantity_form.quantity }}
-                                    {{ item.update_quantity_form.override }}
-                                    <input class="btn btn-outline btn-sm"
-                                           type="submit"
-                                           style="white-space: nowrap"
-                                           value="Uuenda">
+                                    <input type="hidden" name="product_id" value="{{ item.product.id }}">
+
+                                    <!-- Dropdown menu for selecting the quantity -->
+                                    <select name="product_quantity">
+                                        {% for quantity, _ in item.update_quantity_form.quantity.field.choices %}
+                                            <option value="{{ quantity }}" {% if item.quantity == quantity %}selected{% endif %}>
+                                                {{ quantity }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+
+                                    {{ item.update_quantity_form.update }} {# Corrected: Should be "update" not "override" #}
+
+                                    <button type="submit" class="btn btn-outline btn-sm" style="white-space: nowrap">Uuenda</button>
                                 </form>
+
+
                             </td>
                             <td> € {{ item.total }}</td>
 
