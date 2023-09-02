@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    {{ product.product_name }}
+{% endblock %}
 
 {% block content %}
     <body style="background-color: lightgrey">
@@ -8,30 +13,40 @@
         <br>
         <h3 style="text-align:center;"><strong> {{ product.product_name }}</strong></h3>
         <table style="...">
-        <tr>
-            <th rowspan="3">
-                <div>
-                  {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.product_name }}"
-                         width="200" height="200">
-                  {% endif %}
-                </div>
-            </th>
-              <td><h4><strong>Hind:</strong> € {{ product.price }}</h4></td>
-        </tr>
-        <tr>
-           <td> <p>{{ product.description }}</p></td>
-        </tr>
-        <tr>
-           <td> <p>{{ product.weight }} g</p></td>
-        </tr>
+            <tr>
+                <th rowspan="3">
+                    <div>
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}"
+                                 alt="{{ product.product_name }}"
+                                 width="200" height="200">
+                        {% endif %}
+                    </div>
+                </th>
+                <td><h4><strong>Hind:</strong> € {{ product.price }}</h4></td>
+            </tr>
+            <tr>
+                <td><p>{{ product.description }}</p></td>
+            </tr>
+            <tr>
+                <td><p>{{ product.weight }} </p></td>
+            </tr>
         </table>
-    <div class="text-center">
-        <button type="submit" class="btn btn-secondary btn-lg">
-              Lisa ostukorvi
-        </button>
-        <br><br>
-    </div>
+
+        <div class="text" style="padding-left: 20px; padding-bottom: 20px">
+            <form method="post"
+                  action="{% url 'cart:cart_add' product.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ cart_product_form.quantity.id_for_label }}">
+                        Kogus:
+                    </label>
+                    {{ cart_product_form.quantity }}
+                    <input type="submit" class="buy-now btn btn-sm btn-primary"
+                           value="Lisa ostukorvi">
+                </div>
+            </form>
+        </div>
     </div>
 
     </body>
