@@ -24,6 +24,21 @@
             <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">
                 Uuenda
             </button>
+            <br>
+            <br>
+
+            <b>Konto kustutamine:</b>
+            <div class="form-check">
+
+                <label class="form-check-label" for="{{ user_form.confirm_delete.id_for_label }}">
+                {{ user_form.confirm_delete|as_crispy_field }}
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-secondary btn-lg w-100 btn-block">
+            Kustuta
+            </button>
+
             {{form.non_field_errors}}
         </form>
     </div>
