@@ -113,6 +113,11 @@ class UpdateUserForm(forms.ModelForm):
         required=False
     )
 
+    confirm_delete = forms.BooleanField(
+        label="Soovin konto kustutada",
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': 'form-check-input'})
+    )
     class Meta:
         model = User
         fields = ['username', 'email', 'old_password', 'new_password1', 'new_password2']
@@ -137,3 +142,4 @@ class UpdateUserForm(forms.ModelForm):
             raise forms.ValidationError('Kirjuta uus parool kaks korda ühtmoodi!')
 
         return cleaned_data
+

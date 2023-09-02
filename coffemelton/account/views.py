@@ -1,10 +1,11 @@
 from django.contrib.auth.models import auth
-from django.contrib.auth import authenticate, update_session_auth_hash
+from django.contrib.auth import authenticate, update_session_auth_hash, logout
 from django.shortcuts import redirect, render
 from .forms import CreateUserForm, LoginUserForm, UpdateUserForm
 from django.contrib.auth.decorators import login_required
 from shop.models import Category
 from django.contrib.auth.models import User
+
 
 # Create your views here.
 def register(request):
@@ -68,6 +69,14 @@ def profile_management(request):
                 request.user.set_password(new_password)  # Use request.user to access the logged-in user
                 request.user.save()
                 update_session_auth_hash(request, request.user)  # Update the session with the new password
+
+            # Check if the user wants to delete their account
+            confirm_delete = request.POST.get('confirm_delete')
+            if confirm_delete:
+                request.user.delete()  # Delete the user account
+                logout(request)  # Log the user out after deleting the account
+                return redirect('shop:home')  # Redirect to the login page after account deletion
+
             return redirect('dashboard')
 
     else:
