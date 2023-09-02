@@ -2,24 +2,11 @@
 
 from .models import Category, Subcategory, Product
 from django.shortcuts import render
-from .weather import get_weather_with_suggestions
 
 
 def home(request):
-    if 'city' in request.GET:
-        city = request.GET['city']
-        weather_data = get_weather_with_suggestions(city)
-    else:
-        weather_data = get_weather_with_suggestions('Tallinn,ee')  # Default city  Reykjavik,is ,  Anchorage,us
-
     categories = Category.objects.all()
-
-    context = {
-        'categories': categories,
-        'weather_data': weather_data,
-    }
-
-    return render(request, 'home.html', context)
+    return render(request, 'home.html', {'categories': categories})
 
 
 def products_by_category(request, category_id):
