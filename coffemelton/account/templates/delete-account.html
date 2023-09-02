@@ -1,8 +1,13 @@
 # Not sure if and when this will be applied
 
-{% include "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
+
+{% block title %}
+    Konto kustutamine
+{% endblock %}
+
 {% block content %}
 
 <body style="background-color: lightgrey">

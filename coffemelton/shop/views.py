@@ -2,6 +2,7 @@
 
 from .models import Category, Subcategory, Product
 from django.shortcuts import render
+from cart.forms import CartAddProductForm
 from .weather import get_weather_with_suggestions
 
 
@@ -55,10 +56,12 @@ def products_by_subcategory(request, subcategory_id):
 def product_detail(request, slug):
     categories = Category.objects.all()
     product = Product.objects.get(slug=slug)
+    cart_product_form = CartAddProductForm()
 
     context = {
         'categories': categories,
         'product': product,
+        'cart_product_form': cart_product_form,
     }
 
     return render(request, 'product_detail.html', context)

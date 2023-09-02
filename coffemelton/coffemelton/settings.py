@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'shop',
     'account',
+    'cart',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart',
             ],
         },
     },
@@ -141,3 +143,8 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SAMESITE = 'None'
+
+# Cart session time
+
+SESSION_COOKIE_AGE = 86400
+CART_SESSION_ID = 'cart'

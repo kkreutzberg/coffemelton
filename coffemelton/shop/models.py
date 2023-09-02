@@ -37,7 +37,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=False, null=False)
     slug = models.SlugField(max_length=50, unique=True, blank=False, null=False)
-    weight = models.IntegerField(blank=True, null=True)
+    weight = models.CharField(max_length=10, blank=True, null=True)
     image = models.ImageField(upload_to='images/', default='', blank=True, null=True)
 
     class Meta:
