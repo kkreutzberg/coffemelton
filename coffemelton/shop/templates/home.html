@@ -130,6 +130,7 @@
                         <section class="py-3 text-center" style="padding: 10px;">
                             <!-- Weather search form -->
                             <form method="get" class="mt-4">
+                                <h3>Täna soovitame!<br></h3>
                                 <div class="input-group">
                                     <input type="text" name="city" class="form-control"
                                            placeholder="Sisesta linn või asukoht">
@@ -141,13 +142,12 @@
                                 </div>
                             </form>
                             <!-- Weather search form end -->
-                            <h4>Praegune Ilm</h4>
+                            <h5>Praegune Ilm</h5>
                             {% if weather_data %}
                                 <p>
                                     Asukoht: {{ weather_data.name }}, {{ weather_data.sys.country }}</p>
                                 <p>Temperatuur:
                                     {{ weather_data.main.temp|floatformat:1 }}°C</p>
-                                <p>Ilm: {{ weather_data.weather.0.description }}</p>
                                 {% if weather_data.suggestions %}
                                     <p>Sobilik jook selleks ilmaks:
                                         {% if 'Kohv' in weather_data.suggestions %}
