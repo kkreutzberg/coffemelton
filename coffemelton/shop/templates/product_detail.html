@@ -12,6 +12,7 @@
     <div class="container bg-white shadow-md p-15 form-layout">
         <br>
         <h3 style="text-align:center;"><strong> {{ product.product_name }}</strong></h3>
+        <br>
         <table style="...">
             <tr>
                 <th rowspan="3">
@@ -26,13 +27,15 @@
                 <td><h4><strong>Hind:</strong> € {{ product.price }}</h4></td>
             </tr>
             <tr>
-                <td><p>{{ product.description }}</p></td>
+                <td style="text-align:justify">{{ product.description }}</td>
             </tr>
             <tr>
-                <td><p>{{ product.weight }} </p></td>
+                <td><strong>{{ product.weight }} g</strong></td>
+                <br>
             </tr>
-        </table>
 
+        </table>
+        <br>
         <div class="text" style="padding-left: 20px; padding-bottom: 20px">
             <form method="post"
                   action="{% url 'cart:cart_add' product.id %}">
